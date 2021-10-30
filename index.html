@@ -8,7 +8,7 @@
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css"/>
         <title>Monthly Expenditure</title>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script src=" http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js "></script>
+        <script src=" https://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js "></script>
     </head>
 
     <body>
@@ -39,7 +39,6 @@
                     </div>
                 </form>
                 <div id="expenseList" class="mt-5 col-md-6 offset-md-3">
-                    <div class="item"><span>Progressive</span><b><i>&#8377;</i>74</b><button>SELECT</button></div>
                 </div>
             </div>
         </div>
@@ -73,7 +72,7 @@
             function removeRecordHandler(id) {
                 const removeStr = createREMOVERecordRequest("90936079|-31948820675089737|90944385", "Expenses", "EXP-REL", id);
                 jQuery.ajaxSetup({async: false});
-                const removedItem = executeCommandAtGivenBaseUrl(removeStr, "https://api.login2explore.com:5577", "/api/iml");
+                const removedItem = executeCommandAtGivenBaseUrl(removeStr, "http://api.login2explore.com:5577", "/api/iml");
                 jQuery.ajaxSetup({async: true});
                 getRecords();
             }
@@ -81,7 +80,7 @@
             function updateRecordHandler(id){
                 const Get_by_recStr = createGET_BY_RECORDRequest("90936079|-31948820675089737|90944385", "Expenses", "EXP-REL", id, false, false)
                 jQuery.ajaxSetup({async: false});
-                const Get_rec_data = executeCommandAtGivenBaseUrl(Get_by_recStr, "https://api.login2explore.com:5577", "/api/irl");
+                const Get_rec_data = executeCommandAtGivenBaseUrl(Get_by_recStr, "http://api.login2explore.com:5577", "/api/irl");
                 const updRecordData = JSON.parse(Get_rec_data.data);
                 jQuery.ajaxSetup({async: true});
                 
@@ -93,7 +92,7 @@
                 }
                 const updateStr = createUPDATERecordRequest("90936079|-31948820675089737|90944385", JSON.stringify(updateObj), "Expenses", "EXP-REL", id)
                 jQuery.ajaxSetup({async: false});
-                const Get_updated_data = executeCommandAtGivenBaseUrl(updateStr, "https://api.login2explore.com:5577", "/api/iml");
+                const Get_updated_data = executeCommandAtGivenBaseUrl(updateStr, "http://api.login2explore.com:5577", "/api/iml");
                 jQuery.ajaxSetup({async: true});
                 getRecords();
             }
@@ -129,7 +128,7 @@
             function getRecords() {
                 const Get_AllReqStr = createGETALLRecordRequest("90936079|-31948820675089737|90944385", "Expenses", "EXP-REL", 2, 100, false, false);
                 jQuery.ajaxSetup({async: false});
-                const recordStr = executeCommandAtGivenBaseUrl(Get_AllReqStr, "https://api.login2explore.com:5577", "/api/irl");
+                const recordStr = executeCommandAtGivenBaseUrl(Get_AllReqStr, "http://api.login2explore.com:5577", "/api/irl");
                 const recordData = JSON.parse(recordStr.data);
                 jQuery.ajaxSetup({async: true});
                 showList(recordData.json_records);
@@ -149,7 +148,7 @@
 //                alert(putReqStr);
                 jQuery.ajaxSetup({async: false});
                 const resultObj = executeCommandAtGivenBaseUrl(putReqStr,
-                        "https://api.login2explore.com:5577", "/api/iml");
+                        "http://api.login2explore.com:5577", "/api/iml");
 //                alert(JSON.stringify(resultObj));
                 jQuery.ajaxSetup({async: true});
                 resetForm();

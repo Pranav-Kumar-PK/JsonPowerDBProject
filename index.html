@@ -72,7 +72,7 @@
             function removeRecordHandler(id) {
                 const removeStr = createREMOVERecordRequest("90936079|-31948820675089737|90944385", "Expenses", "EXP-REL", id);
                 jQuery.ajaxSetup({async: false});
-                const removedItem = executeCommandAtGivenBaseUrl(removeStr, "http://api.login2explore.com:5577", "/api/iml");
+                const removedItem = executeCommandAtGivenBaseUrl(removeStr, "https://api.login2explore.com:5577", "/api/iml");
                 jQuery.ajaxSetup({async: true});
                 getRecords();
             }
@@ -80,7 +80,7 @@
             function updateRecordHandler(id){
                 const Get_by_recStr = createGET_BY_RECORDRequest("90936079|-31948820675089737|90944385", "Expenses", "EXP-REL", id, false, false)
                 jQuery.ajaxSetup({async: false});
-                const Get_rec_data = executeCommandAtGivenBaseUrl(Get_by_recStr, "http://api.login2explore.com:5577", "/api/irl");
+                const Get_rec_data = executeCommandAtGivenBaseUrl(Get_by_recStr, "https://api.login2explore.com:5577", "/api/irl");
                 const updRecordData = JSON.parse(Get_rec_data.data);
                 jQuery.ajaxSetup({async: true});
                 
@@ -92,7 +92,7 @@
                 }
                 const updateStr = createUPDATERecordRequest("90936079|-31948820675089737|90944385", JSON.stringify(updateObj), "Expenses", "EXP-REL", id)
                 jQuery.ajaxSetup({async: false});
-                const Get_updated_data = executeCommandAtGivenBaseUrl(updateStr, "http://api.login2explore.com:5577", "/api/iml");
+                const Get_updated_data = executeCommandAtGivenBaseUrl(updateStr, "https://api.login2explore.com:5577", "/api/iml");
                 jQuery.ajaxSetup({async: true});
                 getRecords();
             }
@@ -128,7 +128,7 @@
             function getRecords() {
                 const Get_AllReqStr = createGETALLRecordRequest("90936079|-31948820675089737|90944385", "Expenses", "EXP-REL", 2, 100, false, false);
                 jQuery.ajaxSetup({async: false});
-                const recordStr = executeCommandAtGivenBaseUrl(Get_AllReqStr, "http://api.login2explore.com:5577", "/api/irl");
+                const recordStr = executeCommandAtGivenBaseUrl(Get_AllReqStr, "https://api.login2explore.com:5577", "/api/irl");
                 const recordData = JSON.parse(recordStr.data);
                 jQuery.ajaxSetup({async: true});
                 showList(recordData.json_records);
